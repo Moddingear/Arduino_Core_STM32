@@ -8164,6 +8164,26 @@ GenG4.openocd.target=stm32g4x
 GenG4.vid.0=0x0483
 GenG4.pid.0=0x5740
 
+# Phoque 1 Brushless Motor Driver
+GenG4.menu.pnum.PHOQUE1=Phoque 1
+GenG4.menu.pnum.PHOQUE1.upload.maximum_size=131072
+GenG4.menu.pnum.PHOQUE1.upload.maximum_data_size=32768
+GenG4.menu.pnum.PHOQUE1.build.board=PHOQUE1
+GenG4.menu.pnum.PHOQUE1.build.product_line=STM32G431xx
+GenG4.menu.pnum.PHOQUE1.build.variant=STM32G4xx/G431V(6-8-B)T_G441VBT
+GenG4.menu.pnum.PHOQUE1.build.variant_h=variant_{build.board}.h
+GenG4.menu.pnum.PHOQUE1.debug.svd_file={runtime.tools.STM32_SVD.path}/svd/STM32G4xx/STM32G431.svd
+
+# Phoque 2 Brushless Motor Driver
+GenG4.menu.pnum.PHOQUE2=Phoque 2
+GenG4.menu.pnum.PHOQUE2.upload.maximum_size=131072
+GenG4.menu.pnum.PHOQUE2.upload.maximum_data_size=32768
+GenG4.menu.pnum.PHOQUE2.build.board=PHOQUE2
+GenG4.menu.pnum.PHOQUE2.build.product_line=STM32G431xx
+GenG4.menu.pnum.PHOQUE2.build.variant=STM32G4xx/G431C(6-8-B)U_G441CBU
+GenG4.menu.pnum.PHOQUE2.build.variant_h=variant_{build.board}.h
+GenG4.menu.pnum.PHOQUE2.debug.svd_file={runtime.tools.STM32_SVD.path}/svd/STM32G4xx/STM32G431.svd
+
 # WEACT_G474CE board
 GenG4.menu.pnum.WEACT_G474CE=WeAct G474CE
 GenG4.menu.pnum.WEACT_G474CE.upload.maximum_size=524288
@@ -15396,6 +15416,74 @@ STeaMi.menu.upload_method.OpenOCDSTLink=OpenOCD STLink (SWD)
 STeaMi.menu.upload_method.OpenOCDSTLink.upload.protocol=stlink
 STeaMi.menu.upload_method.OpenOCDSTLink.upload.tool=openocd_upload
 
+###############################
+# Phoque-series brushless motor drivers
+PhoqueG4.name=Phoque Brushless (STM32G4)
+
+PhoqueG4.build.core=arduino
+PhoqueG4.build.board=Phoque
+PhoqueG4.build.st_extra_flags=-D{build.product_line} {build.enable_usb} {build.xSerial} -DARDUINO_PHOQUE
+PhoqueG4.build.mcu=cortex-m4
+PhoqueG4.build.fpu=-mfpu=fpv4-sp-d16
+PhoqueG4.build.float-abi=-mfloat-abi=hard
+PhoqueG4.build.series=STM32G4xx
+PhoqueG4.build.flash_offset=0x0
+PhoqueG4.upload.maximum_size=0
+PhoqueG4.upload.maximum_data_size=0
+PhoqueG4.openocd.target=stm32g4x
+PhoqueG4.vid.0=0x0483
+PhoqueG4.pid.0=0x5740
+
+# Phoque 1 Brushless Motor Driver
+PhoqueG4.menu.pnum.PHOQUE1=Phoque 1
+PhoqueG4.menu.pnum.PHOQUE1.upload.maximum_size=131072
+PhoqueG4.menu.pnum.PHOQUE1.upload.maximum_data_size=32768
+PhoqueG4.menu.pnum.PHOQUE1.build.board=PHOQUE1
+PhoqueG4.menu.pnum.PHOQUE1.build.product_line=STM32G431xx
+PhoqueG4.menu.pnum.PHOQUE1.build.variant=STM32G4xx/G431V(6-8-B)T_G441VBT
+PhoqueG4.menu.pnum.PHOQUE1.build.variant_h=variant_{build.board}.h
+PhoqueG4.menu.pnum.PHOQUE1.debug.svd_file={runtime.tools.STM32_SVD.path}/svd/STM32G4xx/STM32G431.svd
+
+# Phoque 2 Brushless Motor Driver
+PhoqueG4.menu.pnum.PHOQUE2=Phoque 2
+PhoqueG4.menu.pnum.PHOQUE2.upload.maximum_size=131072
+PhoqueG4.menu.pnum.PHOQUE2.upload.maximum_data_size=32768
+PhoqueG4.menu.pnum.PHOQUE2.build.board=PHOQUE2
+PhoqueG4.menu.pnum.PHOQUE2.build.product_line=STM32G431xx
+PhoqueG4.menu.pnum.PHOQUE2.build.variant=STM32G4xx/G431C(6-8-B)U_G441CBU
+PhoqueG4.menu.pnum.PHOQUE2.build.variant_h=variant_{build.board}.h
+PhoqueG4.menu.pnum.PHOQUE2.debug.svd_file={runtime.tools.STM32_SVD.path}/svd/STM32G4xx/STM32G431.svd
+
+# Upload menu
+PhoqueG4.menu.upload_method.swdMethod=STM32CubeProgrammer (SWD)
+PhoqueG4.menu.upload_method.swdMethod.upload.protocol=swd
+PhoqueG4.menu.upload_method.swdMethod.upload.options=-a {upload.address} -m {upload.mode} -s {upload.start} -f {upload.freq} -n {upload.stlink_sn}
+PhoqueG4.menu.upload_method.swdMethod.upload.tool=stm32CubeProg
+
+PhoqueG4.menu.upload_method.serialMethod=STM32CubeProgrammer (Serial)
+PhoqueG4.menu.upload_method.serialMethod.upload.protocol=serial
+PhoqueG4.menu.upload_method.serialMethod.upload.options=-c {serial.port.file} -a {upload.address} -s {upload.start} -p {upload.parity}
+PhoqueG4.menu.upload_method.serialMethod.upload.tool=stm32CubeProg
+
+PhoqueG4.menu.upload_method.dfuMethod=STM32CubeProgrammer (DFU)
+PhoqueG4.menu.upload_method.dfuMethod.upload.protocol=dfu
+PhoqueG4.menu.upload_method.dfuMethod.upload.options=-v {upload.vid} -p {upload.pid} -a {upload.address} -s {upload.start}
+PhoqueG4.menu.upload_method.dfuMethod.upload.tool=stm32CubeProg
+
+PhoqueG4.menu.upload_method.bmpMethod=BMP (Black Magic Probe)
+PhoqueG4.menu.upload_method.bmpMethod.upload.protocol=gdb_bmp
+PhoqueG4.menu.upload_method.bmpMethod.upload.tool=bmp_upload
+
+PhoqueG4.menu.upload_method.OpenOCDSTLink=OpenOCD STLink (SWD)
+PhoqueG4.menu.upload_method.OpenOCDSTLink.upload.protocol=stlink
+PhoqueG4.menu.upload_method.OpenOCDSTLink.upload.tool=openocd_upload
+
+PhoqueG4.menu.upload_method.OpenOCDDapLink=OpenOCD DapLink (SWD)
+PhoqueG4.menu.upload_method.OpenOCDDapLink.upload.protocol=cmsis-dap
+PhoqueG4.menu.upload_method.OpenOCDDapLink.upload.tool=openocd_upload
+PhoqueG4.menu.upload_method.OpenOCDDapLink.debug.server.openocd.scripts.0=interface/cmsis-dap.cfg
+PhoqueG4.menu.upload_method.OpenOCDDapLink.debug.server.openocd.scripts.1={runtime.platform.path}/debugger/select_swd.cfg
+
 ################################################################################
 # Serialx activation
 Nucleo_144.menu.xserial.generic=Enabled (generic 'Serial')
@@ -15656,6 +15744,12 @@ STeaMi.menu.xserial.none=Enabled (no generic 'Serial')
 STeaMi.menu.xserial.none.build.xSerial=-DHAL_UART_MODULE_ENABLED -DHWSERIAL_NONE
 STeaMi.menu.xserial.disabled=Disabled (no Serial support)
 STeaMi.menu.xserial.disabled.build.xSerial=
+
+PhoqueG4.menu.xserial.generic=Enabled (generic 'Serial')
+PhoqueG4.menu.xserial.none=Enabled (no generic 'Serial')
+PhoqueG4.menu.xserial.none.build.xSerial=-DHAL_UART_MODULE_ENABLED -DHWSERIAL_NONE
+PhoqueG4.menu.xserial.disabled=Disabled (no Serial support)
+PhoqueG4.menu.xserial.disabled.build.xSerial=
 
 # USB connectivity
 Nucleo_144.menu.usb.none=None
@@ -16037,6 +16131,19 @@ SparkFun.menu.xusb.HS=High Speed
 SparkFun.menu.xusb.HS.build.usb_speed=-DUSE_USB_HS
 SparkFun.menu.xusb.HSFS=High Speed in Full Speed mode
 SparkFun.menu.xusb.HSFS.build.usb_speed=-DUSE_USB_HS -DUSE_USB_HS_IN_FS
+
+PhoqueG4.menu.usb.none=None
+PhoqueG4.menu.usb.CDCgen=CDC (generic 'Serial' supersede U(S)ART)
+PhoqueG4.menu.usb.CDCgen.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC
+PhoqueG4.menu.usb.CDC=CDC (no generic 'Serial')
+PhoqueG4.menu.usb.CDC.build.enable_usb={build.usb_flags} -DUSBD_USE_CDC -DDISABLE_GENERIC_SERIALUSB
+PhoqueG4.menu.usb.HID=HID (keyboard and mouse)
+PhoqueG4.menu.usb.HID.build.enable_usb={build.usb_flags} -DUSBD_USE_HID_COMPOSITE
+PhoqueG4.menu.xusb.FS=Low/Full Speed
+PhoqueG4.menu.xusb.HS=High Speed
+PhoqueG4.menu.xusb.HS.build.usb_speed=-DUSE_USB_HS
+PhoqueG4.menu.xusb.HSFS=High Speed in Full Speed mode
+PhoqueG4.menu.xusb.HSFS.build.usb_speed=-DUSE_USB_HS -DUSE_USB_HS_IN_FS
 
 # Optimizations
 Nucleo_144.menu.opt.osstd=Smallest (-Os default)
@@ -16879,6 +16986,26 @@ STeaMi.menu.opt.ogstd.build.flags.optimize=-Og
 STeaMi.menu.opt.o0std=No Optimization (-O0)
 STeaMi.menu.opt.o0std.build.flags.optimize=-O0
 
+PhoqueG4.menu.opt.osstd=Smallest (-Os default)
+PhoqueG4.menu.opt.oslto=Smallest (-Os) with LTO
+PhoqueG4.menu.opt.oslto.build.flags.optimize=-Os -flto
+PhoqueG4.menu.opt.o1std=Fast (-O1)
+PhoqueG4.menu.opt.o1std.build.flags.optimize=-O1
+PhoqueG4.menu.opt.o1lto=Fast (-O1) with LTO
+PhoqueG4.menu.opt.o1lto.build.flags.optimize=-O1 -flto
+PhoqueG4.menu.opt.o2std=Faster (-O2)
+PhoqueG4.menu.opt.o2std.build.flags.optimize=-O2
+PhoqueG4.menu.opt.o2lto=Faster (-O2) with LTO
+PhoqueG4.menu.opt.o2lto.build.flags.optimize=-O2 -flto
+PhoqueG4.menu.opt.o3std=Fastest (-O3)
+PhoqueG4.menu.opt.o3std.build.flags.optimize=-O3
+PhoqueG4.menu.opt.o3lto=Fastest (-O3) with LTO
+PhoqueG4.menu.opt.o3lto.build.flags.optimize=-O3 -flto
+PhoqueG4.menu.opt.ogstd=Debug (-Og)
+PhoqueG4.menu.opt.ogstd.build.flags.optimize=-Og
+PhoqueG4.menu.opt.o0std=No Optimization (-O0)
+PhoqueG4.menu.opt.o0std.build.flags.optimize=-O0
+
 # Debug information
 Nucleo_144.menu.dbg.none=None
 Nucleo_144.menu.dbg.enable_sym=Symbols Enabled (-g)
@@ -17207,6 +17334,14 @@ STeaMi.menu.dbg.enable_log=Core logs Enabled
 STeaMi.menu.dbg.enable_log.build.flags.debug=
 STeaMi.menu.dbg.enable_all=Core Logs and Symbols Enabled (-g)
 STeaMi.menu.dbg.enable_all.build.flags.debug=-g
+
+PhoqueG4.menu.dbg.none=None
+PhoqueG4.menu.dbg.enable_sym=Symbols Enabled (-g)
+PhoqueG4.menu.dbg.enable_sym.build.flags.debug=-g -DNDEBUG
+PhoqueG4.menu.dbg.enable_log=Core logs Enabled
+PhoqueG4.menu.dbg.enable_log.build.flags.debug=
+PhoqueG4.menu.dbg.enable_all=Core Logs and Symbols Enabled (-g)
+PhoqueG4.menu.dbg.enable_all.build.flags.debug=-g
 
 # C Runtime Library
 Nucleo_144.menu.rtlib.nano=Newlib Nano (default)
@@ -17628,3 +17763,13 @@ STeaMi.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
 STeaMi.menu.rtlib.nanofps.build.flags.ldspecs=--specs=nano.specs -u _printf_float -u _scanf_float
 STeaMi.menu.rtlib.full=Newlib Standard
 STeaMi.menu.rtlib.full.build.flags.ldspecs=
+
+PhoqueG4.menu.rtlib.nano=Newlib Nano (default)
+PhoqueG4.menu.rtlib.nanofp=Newlib Nano + Float Printf
+PhoqueG4.menu.rtlib.nanofp.build.flags.ldspecs=--specs=nano.specs -u _printf_float
+PhoqueG4.menu.rtlib.nanofs=Newlib Nano + Float Scanf
+PhoqueG4.menu.rtlib.nanofs.build.flags.ldspecs=--specs=nano.specs -u _scanf_float
+PhoqueG4.menu.rtlib.nanofps=Newlib Nano + Float Printf/Scanf
+PhoqueG4.menu.rtlib.nanofps.build.flags.ldspecs=--specs=nano.specs -u _printf_float -u _scanf_float
+PhoqueG4.menu.rtlib.full=Newlib Standard
+PhoqueG4.menu.rtlib.full.build.flags.ldspecs=
